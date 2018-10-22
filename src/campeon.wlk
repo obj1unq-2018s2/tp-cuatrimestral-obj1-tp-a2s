@@ -1,5 +1,5 @@
-import items.*
-import minions.*
+//import items.*
+//import minions.*
 class Campeon{
 	var property puntosDeVida 
 	var property puntosDeAtaque
