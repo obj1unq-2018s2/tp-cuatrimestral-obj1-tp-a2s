@@ -1,5 +1,5 @@
-//import items.*
-//import minions.*
+import items.*
+import minions.*
 class Campeon{
 	var property puntosDeVida 
 	var property puntosDeAtaque
@@ -9,11 +9,19 @@ class Campeon{
 	
 	method equipar(item){
 		itemsEquipados.add(item)
+		puntosDeVida += item.otorgarVida()
+		puntosDeAtaque += item.otorgarAtaque()
+		bloqueos += item.otorgarBloqueos()
+		puntosDeDanio += item.otorgarDanio()
 	}
 	method desequipar(item){
-		itemsEquipados.remove(item)
+		if(itemsEquipados.contains(item)){
+			itemsEquipados.remove(item) 
+			puntosDeDanio -= item.danioRecuperado()
+			bloqueos += item.recuperarBloqueos()
+		}
 	}
 	method atacar(){
-		
+		puntosDeDanio += minions.defenderse()
 	}
 }
