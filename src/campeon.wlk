@@ -10,7 +10,7 @@ class Campeon{
 	
 	method equipar(item){
 		itemsEquipados.add(item)
-		puntosDeVida += item.otorgarVida()
+		puntosDeVida += item.otorgarVida(self)
 		puntosDeAtaque += item.otorgarAtaque()
 		bloqueos += item.otorgarBloqueos()
 		puntosDeDanio += item.otorgarDanio()
