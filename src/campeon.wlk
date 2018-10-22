@@ -6,6 +6,7 @@ class Campeon{
 	var property bloqueos
 	var property puntosDeDanio = 0
 	var itemsEquipados = []
+	var property estoyVivo = true
 	
 	method equipar(item){
 		itemsEquipados.add(item)
@@ -22,6 +23,9 @@ class Campeon{
 		}
 	}
 	method atacar(){
-		puntosDeDanio += minions.defenderse()
+		if(puntosDeDanio >= puntosDeVida){
+			puntosDeDanio += minions.defenderse()
+			estoyVivo = false
+		}
 	}
 }
