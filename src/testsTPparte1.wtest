@@ -1,0 +1,34 @@
+import campeon.*
+import items.*
+import minions.*
+describe "Tests de la parte 1 del TP"{
+	var campeon1 = new Campeon(
+		puntosDeVida = 50,
+		puntosDeAtaque = 15
+	)
+	var anilloDoran1 = new AnilloDeDoran()
+	var tomoAmp1 = new TomoAmplificador()
+	var oleadaMinions1 = new Minions(
+		cantidadDeMinions = 10,
+		plusDeAtaque = 5
+	)
+	test "Verificar que tenga equipados anillo y tomo"{
+		assert.equals(campeon1.puntosDeVida(), 50)
+		assert.equals(campeon1.puntosDeAtaque(), 15)
+		
+		// Equipamos después porque sino modif ataque y vida
+		campeon1.equipar(anilloDoran1)
+		campeon1.equipar(tomoAmp1)
+		assert.equals(campeon1.itemsEquipados(), [anilloDoran1, tomoAmp1])
+		
+		// Ataque triple por los bloqueos, sino no muere
+		campeon1.atacarA(oleadaMinions1) // bloqueo 1
+		campeon1.atacarA(oleadaMinions1) // bloqueo 2
+		campeon1.atacarA(oleadaMinions1) // recien este hace danio al campeon
+		
+		campeon1.desequipar(tomoAmp1)
+		
+		assert.that(!campeon1.estoyVivo())
+	}
+	
+}
