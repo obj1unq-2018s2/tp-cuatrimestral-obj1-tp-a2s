@@ -27,7 +27,7 @@ describe "Tests de la parte 1 del TP"{
 		campeon1.atacarA(oleadaMinions1) // recien este hace danio al campeon
 		
 		campeon1.desequipar(tomoAmp1)
-		
+		// POR ALGUNA RAZON SIGUE VIVO, no se porque.
 		assert.that(!campeon1.estoyVivo())
 	}
 	
