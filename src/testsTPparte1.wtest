@@ -2,19 +2,20 @@ import campeon.*
 import items.*
 import minions.*
 describe "Tests de la parte 1 del TP"{
+	
 	var campeon1 = new Campeon(
-		puntosDeVida = 50,
-		puntosDeAtaque = 15
+		vidaBase = 50,
+		ataqueBase = 15
 	)
 	var anilloDoran1 = new AnilloDeDoran()
 	var tomoAmp1 = new TomoAmplificador()
 	var oleadaMinions1 = new Minions(
 		cantidadDeMinions = 10,
-		plusDeAtaque = 5
+		plusDeAtaque = 25
 	)
 	test "Verificar que tenga equipados anillo y tomo"{
-		assert.equals(campeon1.puntosDeVida(), 50)
-		assert.equals(campeon1.puntosDeAtaque(), 15)
+		assert.equals(campeon1.vida(), 50)
+		assert.equals(campeon1.ataque(), 15)
 		
 		// Equipamos después porque sino modif ataque y vida
 		campeon1.equipar(anilloDoran1)
@@ -26,9 +27,30 @@ describe "Tests de la parte 1 del TP"{
 		campeon1.atacarA(oleadaMinions1) // bloqueo 2
 		campeon1.atacarA(oleadaMinions1) // recien este hace danio al campeon
 		
+		
 		campeon1.desequipar(tomoAmp1)
-		// POR ALGUNA RAZON SIGUE VIVO, no se porque.
+		
+		assert.equals(1, campeon1.bloqueos())
+		assert.equals(70, campeon1.puntosDeDanio())
+		assert.equals(110, campeon1.vida())
+		assert.equals(30, campeon1.ataque())
+		
+		
+		campeon1.desequipar(anilloDoran1)
+		
+		assert.equals(1, campeon1.bloqueos())
+		assert.equals(60, campeon1.puntosDeDanio())
+		assert.equals(50, campeon1.vida())
+		assert.equals(15, campeon1.ataque())
+		
+		//Compruebo que tras ambos desequipamientos el campeón pierde tanto los puntos fijos que aportaba
+		//cada item como el factor multiplicador de los items que amplifican, y también absorbe los efectos negativos
+		//del desequipamiento.
+		
+		
 		assert.that(!campeon1.estoyVivo())
+
+		
 	}
 	
 }
