@@ -15,6 +15,7 @@ class Campeon{
 		return itemsEquipados.map({item => item.amplificarVida(self)}).sum()
 		
 	}
+
 	method amplificacionAtaque(){
 		return itemsEquipados.map({item => item.amplificarAtaque(self)}).sum()
 	}
