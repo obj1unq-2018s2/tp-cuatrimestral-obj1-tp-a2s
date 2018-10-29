@@ -24,31 +24,23 @@ describe "Tests de la parte 1 del TP"{
 		
 		// Ataque triple por los bloqueos, sino no muere
 		campeon1.atacarA(oleadaMinions1) // bloqueo 1
+		assert.equals(oleadaMinions1.cantidadDeMinions(), 0)
 		campeon1.atacarA(oleadaMinions1) // bloqueo 2
 		campeon1.atacarA(oleadaMinions1) // recien este hace danio al campeon
 		
 		
 		campeon1.desequipar(tomoAmp1)
 		
-		assert.equals(1, campeon1.bloqueos())
-		assert.equals(70, campeon1.puntosDeDanio())
-		assert.equals(110, campeon1.vida())
-		assert.equals(30, campeon1.ataque())
-		
-		
 		campeon1.desequipar(anilloDoran1)
-		
-		assert.equals(1, campeon1.bloqueos())
-		assert.equals(60, campeon1.puntosDeDanio())
-		assert.equals(50, campeon1.vida())
-		assert.equals(15, campeon1.ataque())
-		
+
+		campeon1.equipar(tomoAmp1)
+		campeon1.desequipar(tomoAmp1)
 		//Compruebo que tras ambos desequipamientos el campeón pierde tanto los puntos fijos que aportaba
 		//cada item como el factor multiplicador de los items que amplifican, y también absorbe los efectos negativos
 		//del desequipamiento.
 		
 		
-		assert.that(!campeon1.estoyVivo())
+		assert.notThat(campeon1.estoyVivo())
 
 		
 	}

@@ -1,9 +1,9 @@
 import items.*
 import minions.*
 class Campeon{
-	const vidaBase
+	const vidaBase = 0
 	var property vidaExtra = 0
-	const ataqueBase
+	const ataqueBase = 0
 	var property ataqueExtra = 0
 	//divido vida y ataque en base y extra, porque de otro modo se pierde el valor asignado al crear la instancia.
 	//Es necesario recordarlo para poder restablecer al campeón al desequipar un item.
@@ -48,11 +48,8 @@ class Campeon{
 	}
 
 	method atacarA(enemigo){
-		//puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
-		//Esto lo reescribo porque cada defensa de oleada debería restar un bloqueo.
-		//Faltaba además agregar el daño provocado por la defensa de la oleada.
-		
 		if (bloqueos > 0) {bloqueos -= 1} 
 		else {puntosDeDanio += enemigo.defenderse()}
+		enemigo.recibirAtaque(self.ataque())
 	}
 }
