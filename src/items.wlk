@@ -1,16 +1,12 @@
 class AnilloDeDoran{
 	method serEquipado(campeon_){
-		campeon_.recibirHP(60)
-		campeon_.recibirATK(15)
 		campeon_.recibirDMG(5)
 	}
 	method serDesequipado(campeon_){
 		campeon_.recibirDMG(-10)
-		campeon_.recibirHP(-60)
-		campeon_.recibirATK(-15)
 	}
-	method amplificarVida(campeon_){return 0}
-	method amplificarAtaque(campeon_){return 0}
+	method amplificarVida(campeon_){return 60}
+	method amplificarAtaque(campeon_){return 15}
 	//Agrego estos dos métodos sólo por razones de conservación polimórfica.
 }
 class TomoAmplificador{
@@ -26,9 +22,11 @@ class TomoAmplificador{
 		campeon_.recibirBloqueos(1)
 		campeon_.recibirDMG(30)
 	}
+
 	method amplificarVida(campeon_){
 		return campeon_.puntosDeDanio() * 0.25
  	}
+
 	method amplificarAtaque(campeon_){
 		return campeon_.puntosDeAtaque() * 0.05
 	}

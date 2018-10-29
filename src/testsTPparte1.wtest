@@ -13,9 +13,13 @@ describe "Tests de la parte 1 del TP"{
 		cantidadDeMinions = 10,
 		plusDeAtaque = 25
 	)
-	test "Verificar que tenga equipados anillo y tomo"{
+
+	test "Valores básicos del campeón"{
 		assert.equals(campeon1.vida(), 50)
-		assert.equals(campeon1.ataque(), 15)
+		assert.equals(campeon1.ataque(), 15)	
+	}
+	
+	test "Verificar que tenga equipados anillo y tomo"{
 		
 		// Equipamos después porque sino modif ataque y vida
 		campeon1.equipar(anilloDoran1)
@@ -48,7 +52,7 @@ describe "Tests de la parte 1 del TP"{
 		//del desequipamiento.
 		
 		
-		assert.that(!campeon1.estoyVivo())
+		assert.notThat(campeon1.estoyVivo())
 
 		
 	}
