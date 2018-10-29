@@ -1,4 +1,5 @@
 class AnilloDeDoran{
+	const precio = 300
 	method serEquipado(campeon_){
 		campeon_.recibirDMG(5)
 	}
@@ -10,6 +11,7 @@ class AnilloDeDoran{
 	//Agrego estos dos métodos sólo por razones de conservación polimórfica.
 }
 class TomoAmplificador{
+	method precio() = 500
 	method serEquipado(campeon_){
 		campeon_.recibirBloqueos(2)
 	}
@@ -26,16 +28,17 @@ class TomoAmplificador{
 		return campeon_.puntosDeDanio() * 0.05
 	}
 }
-class SombreroDeRabadon{
-	method serEquipado(campeon_){
+class SombreroDeRabadon inherits TomoAmplificador{
+	override method precio () = 100 + super()
+	override method serEquipado(campeon_){
 		campeon_.recibirBloqueos(2)
 		campeon_.recibirDMG(5)
 	}
-	method amplificarVida(campeon_){
+	override method amplificarVida(campeon_){
 		return campeon_.puntosDeDanio() * 0.25 + 5
 	}
-	method amplificarAtaque(campeon_){
+	override method amplificarAtaque(campeon_){
 		return campeon_.puntosDeDanio() * 2
 	}
-	method serDesequipado(campeon_){} //no pasa nada
+	override method serDesequipado(campeon_){} //no pasa nada
 }

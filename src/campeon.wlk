@@ -5,12 +5,23 @@ class Campeon{
 	var property vidaExtra = 0
 	const ataqueBase = 0
 	var property ataqueExtra = 0
-	//divido vida y ataque en base y extra, porque de otro modo se pierde el valor asignado al crear la instancia.
-	//Es necesario recordarlo para poder restablecer al campeón al desequipar un item.
 	var property bloqueos = 0
 	var property puntosDeDanio = 0
 	var property itemsEquipados = []
+	var dinero = 0
 	
+	method comprar(item){
+		if(dinero>= item.precio()){
+			self.equipar(item)
+			dinero -= item.precio()
+		}
+	}
+	method vender(item){
+		if(itemsEquipados.contains(item)){
+			self.desequipar(item)
+			dinero += item.precio() / 2
+		}
+	}
 	method amplificacionVida() {
 		return itemsEquipados.map({item => item.amplificarVida(self)}).sum()
 		
