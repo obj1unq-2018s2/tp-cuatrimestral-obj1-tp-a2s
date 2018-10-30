@@ -69,10 +69,10 @@ class Campeon{
 		// no se si funciona
 		enemigo.recibirAtaque(self.ataque())
 		puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
-		bloqueos -= 1
+		bloqueos -= if(not enemigo.estoyVivo()) 0 else 1
 		// si tenes mas ataque que enemigos, recibis de dinero la cantidad de total de minions que quedan
 		// sino recibis de dinero solo lo que hiciste de ataque
 		// si los minions estan muertos dinero DEBERIA sumar 0, si no me equivoque.
-		dinero += if(self.ataque()>enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
+		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
 	}
 }
