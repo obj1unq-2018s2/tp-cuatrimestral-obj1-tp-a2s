@@ -50,3 +50,18 @@ class SombreroDeRabadon inherits TomoAmplificador{
 	}
 	override method serDesequipado(campeon_){} //no pasa nada
 }
+
+class PosionDeVida {
+	method precio() = 50
+	method serEquipado(campeon_){}
+	method serDesequipado(campeon_){}
+	method habilidadActivable(campeon_){
+		var usos = 2
+		if(usos>0){
+			campeon_.recibirDMG(-50)	
+			usos -= 1
+		}
+	}
+	method amplificarVida(campeon_){return 0}
+	method amplificarAtaque(campeon_){return 0}
+}
