@@ -60,8 +60,23 @@ class Campeon{
 	}
 
 	method atacarA(enemigo){
-		if (bloqueos > 0) {bloqueos -= 1} 
-		else {puntosDeDanio += enemigo.defenderse()}
-		enemigo.recibirAtaque(self.ataque())
+//  version de la parte 1 de atacarA()
+//		if (bloqueos > 0) {bloqueos -= 1} 
+//		else {puntosDeDanio += enemigo.defenderse()}
+//		enemigo.recibirAtaque(self.ataque())
+
+		// Modificado para la parte de dinero de la P2 del enunciado
+		// no se si funciona
+		if(enemigo.estoyVivo()){
+			enemigo.recibirAtaque(self.ataque())
+			puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
+			bloqueos -= 1
+			// si tenes mas ataque que enemigos, recibis de dinero la cantidad de total de minions que quedan
+			// sino recibis de dinero solo lo que hiciste de ataque
+			dinero += if(self.ataque()>enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
+		}else{
+			// el campeon puede atacar aun cuando los minions estan muertos
+			enemigo.recibirAtaque(self.ataque())
+		}
 	}
 }
