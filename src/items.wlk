@@ -1,5 +1,6 @@
 class AnilloDeDoran{
 	const precio = 300
+	method habilidadActivable(campeon_){}
 	method serEquipado(campeon_){
 		campeon_.recibirDMG(5)
 	}
@@ -12,6 +13,13 @@ class AnilloDeDoran{
 }
 class TomoAmplificador{
 	method precio() = 500
+	method habilidadActivable(campeon_){
+		var flag = true
+		if(campeon_.dinero() < 500 && flag){
+			campeon_.dinero(500)
+			flag = false
+		}
+	}
 	method serEquipado(campeon_){
 		campeon_.recibirBloqueos(2)
 	}

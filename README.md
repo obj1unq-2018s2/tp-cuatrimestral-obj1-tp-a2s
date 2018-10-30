@@ -101,15 +101,23 @@ Al atacar a una oleada de minions, un campeón gana una cantidad de dinero igual
 
 
 ### Modificaciones a los items equipables
-Además de precio, se pide agregar a los items equipables una habilidad _activable_, esto es, 
-una habilidad que se puede activar en cualquier momento, según la siguiente descripción:
+
+Además de precio, se pide agregar a los items equipables una 
+habilidad _activable_, esto es, 
+una habilidad que se puede activar en cualquier momento, según 
+la siguiente descripción:
 
 * **Anillo de Doran:** Cuesta 300, no posee habilidad activable.
 
-* **Tomo Amplificador:** Cuesta 500 y su habilidad activable consiste en que, cuando el campeón posee menos de 500 de dinero, automáticamente transforma su dinero en 500. Sólo puede ser usada una vez.
+* **Tomo Amplificador:** Cuesta 500 y su habilidad activable 
+consiste en que, cuando el campeón posee menos de 500 de dinero, 
+automáticamente transforma su dinero en 500. Sólo puede ser usada 
+una vez.
 
-* **Sombrero de Rabadon:** Cuesta 100 más que un Tomo Amplificador, no posee habilidad activable.  
-	**¡OJO!** no vale poner "600", hay que poner "100 más que un (nuevo) Tomo Amplificador", de forma tal que si por alguna razón el precio del Tomo aumenta a 700, el del Sombrero aumente _automáticamente_ a 800.
+* **Sombrero de Rabadon:** Cuesta 100 más que un Tomo Amplificador,
+posee la misma habilidad activable que el tomo amplificador.  
+	**¡OJO!** no vale poner "600", hay que poner "100 más que un 
+	(nuevo) Tomo Amplificador", de forma tal que si por alguna razón el precio del Tomo aumenta a 700, el del Sombrero aumente _automáticamente_ a 800.
 
 También se pide agregar un nuevo objeto: 
 

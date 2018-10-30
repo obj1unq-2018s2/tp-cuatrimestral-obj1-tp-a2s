@@ -8,7 +8,7 @@ class Campeon{
 	var property bloqueos = 0
 	var property puntosDeDanio = 0
 	var property itemsEquipados = []
-	var dinero = 0
+	var property dinero = 0
 	
 	method comprar(item){
 		if(dinero>= item.precio()){
