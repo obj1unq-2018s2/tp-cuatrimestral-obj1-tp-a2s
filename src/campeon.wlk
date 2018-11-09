@@ -35,7 +35,9 @@ class Campeon{
 	
 	method recibirHP(aumentoDeVida){vidaExtra += aumentoDeVida}
 	method recibirATK(aumentoDeAtaque){ataqueExtra += aumentoDeAtaque}
-	method recibirDMG(cantidadDeDanio){puntosDeDanio += cantidadDeDanio}
+	method recibirDMG(cantidadDeDanio){
+			puntosDeDanio = (puntosDeDanio + cantidadDeDanio).max(0)
+	}
 	method recibirBloqueos(cantidadDeBloqueos){bloqueos += cantidadDeBloqueos}
 	
 	method ataque(){
@@ -60,11 +62,6 @@ class Campeon{
 	}
 
 	method atacarA(enemigo){
-//  version de la parte 1 de atacarA()
-//		if (bloqueos > 0) {bloqueos -= 1} 
-//		else {puntosDeDanio += enemigo.defenderse()}
-//		enemigo.recibirAtaque(self.ataque())
-
 		// Modificado para la parte de dinero de la P2 del enunciado
 		// no se si funciona
 		enemigo.recibirAtaque(self.ataque())

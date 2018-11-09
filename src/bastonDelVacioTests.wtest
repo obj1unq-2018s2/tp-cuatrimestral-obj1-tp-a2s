@@ -1,0 +1,38 @@
+import campeon.*
+import items.*
+import minions.*
+describe "Tests del Baston del Vacio (Tobias Ambrosi)" {
+	var elesis = new Campeon(
+		vidaBase = 50,
+		ataqueBase = 15,
+		dinero = 800
+	)
+	var anilloDoran_1 = new AnilloDeDoran()
+	var anilloDoran_2 = new AnilloDeDoran()
+	var pocionDeVida = new PosionDeVida()
+	var sombreroDeRabadon = new SombreroDeRabadon()
+	var bastonDelVacio = new BastonDelVacio(
+		materiales = [sombreroDeRabadon, pocionDeVida]
+	)
+	
+	fixture{
+		elesis.comprar(anilloDoran_1)
+		elesis.comprar(anilloDoran_2)
+		
+		elesis.equipar(anilloDoran_1)
+		elesis.equipar(anilloDoran_2)
+		
+		elesis.comprar(bastonDelVacio)
+		elesis.equipar(bastonDelVacio)
+		
+		bastonDelVacio.habilidadActivable(elesis)
+	}
+	
+	test "0 de danio recibido"{
+		assert.equals(0, elesis.puntosDeDanio())
+	}
+	
+	test "500 de dinero"{
+		assert.equals(500, elesis.dinero())
+	}
+}

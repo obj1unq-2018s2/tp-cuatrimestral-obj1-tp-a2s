@@ -1,5 +1,5 @@
 class AnilloDeDoran{
-	const precio = 300
+	const property precio = 300
 	method habilidadActivable(campeon_){}
 	method serEquipado(campeon_){
 		campeon_.recibirDMG(5)
@@ -14,10 +14,10 @@ class AnilloDeDoran{
 class TomoAmplificador{
 	method precio() = 500
 	method habilidadActivable(campeon_){
-		var flag = true
-		if(campeon_.dinero() < 500 && flag){
+		var usoUnico = true
+		if(campeon_.dinero() < 500 and usoUnico){
 			campeon_.dinero(500)
-			flag = false
+			usoUnico = false
 		}
 	}
 	method serEquipado(campeon_){
@@ -49,6 +49,9 @@ class SombreroDeRabadon inherits TomoAmplificador{
 		return campeon_.puntosDeDanio() * 2
 	}
 	override method serDesequipado(campeon_){} //no pasa nada
+	
+	// Al heredar del TomoAmplificador y tener la misma habilidad
+	// no hace falta re-escribirla
 }
 
 class PosionDeVida {
@@ -57,11 +60,31 @@ class PosionDeVida {
 	method serDesequipado(campeon_){}
 	method habilidadActivable(campeon_){
 		var usos = 2
-		if(usos>0){
+		if(usos > 0){
 			campeon_.recibirDMG(-50)	
 			usos -= 1
 		}
 	}
 	method amplificarVida(campeon_){return 0}
 	method amplificarAtaque(campeon_){return 0}
+}
+
+class BastonDelVacio {
+	// PARTE INDIVIDUAL DE: Tobias Ambrosi
+	var property materiales = []
+	
+	method precio() = 0
+	method serEquipado(camepon_){}
+	method serDesequipado(campeon_){}
+	method habilidadActivable(campeon_){
+		materiales.forEach{
+			item => item.habilidadActivable(campeon_)
+		}
+	}
+	method amplificarVida(campeon_) = materiales.sum{
+		item => item.amplificarVida() / 2
+	}
+	method amplificarAtaque(camepon_) = materiales.sum{
+		item => item.amplificarAtaque()
+	}
 }
