@@ -23,7 +23,7 @@ describe "Tests de la parte 1 del TP"{
 		
 		campeon1.equipar(anilloDoran1)
 		campeon1.equipar(tomoAmp1)
-		assert.equals(campeon1.itemsEquipados(), [anilloDoran1, tomoAmp1])	
+		assert.equals(campeon1.inventario(), [anilloDoran1, tomoAmp1])	
 		
 		campeon1.atacarA(oleadaMinions1) // bloqueo 1
 		assert.equals(oleadaMinions1.cantidadDeMinions(), 0)
@@ -38,9 +38,7 @@ describe "Tests de la parte 1 del TP"{
 
 		campeon1.equipar(tomoAmp1)
 		campeon1.desequipar(tomoAmp1)
-		//Compruebo que tras ambos desequipamientos el campeón pierde tanto los puntos fijos que aportaba
-		//cada item como el factor multiplicador de los items que amplifican, y también absorbe los efectos negativos
-		//del desequipamiento.
+		
 		
 		
 		assert.notThat(campeon1.estoyVivo())
