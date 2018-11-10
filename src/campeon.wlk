@@ -7,8 +7,14 @@ class Campeon{
 	var property ataqueExtra = 0
 	var property bloqueos = 0
 	var property puntosDeDanio = 0
-	var property itemsEquipados = []
+	var itemsEquipados = []
 	var property dinero = 0
+	
+	method activarHabilidadEspecial(item){
+		if (self.inventario().contains(item)){
+			item.habilidadActivable(self)
+		}
+	}
 	
 	method comprar(item){
 		if(dinero>= item.precio()){
@@ -22,16 +28,19 @@ class Campeon{
 			dinero += item.precio() / 2
 		}
 	}
+	
+	method inventario() {
+		return itemsEquipados
+	}
+	
 	method amplificacionVida() {
-		return itemsEquipados.map({item => item.amplificarVida(self)}).sum()
+		return self.inventario().map({item => item.amplificarVida(self)}).sum()
 		
 	}
 
 	method amplificacionAtaque(){
-		return itemsEquipados.map({item => item.amplificarAtaque(self)}).sum()
+		return self.inventario().map({item => item.amplificarAtaque(self)}).sum()
 	}
-	//Estos dos métodos amplifican vida y ataque según los métodos de cada item equipado.
-	
 	
 	method recibirHP(aumentoDeVida){vidaExtra += aumentoDeVida}
 	method recibirATK(aumentoDeAtaque){ataqueExtra += aumentoDeAtaque}
@@ -64,12 +73,17 @@ class Campeon{
 	method atacarA(enemigo){
 		// Modificado para la parte de dinero de la P2 del enunciado
 		// no se si funciona
-		enemigo.recibirAtaque(self.ataque())
-		puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
 		bloqueos -= if(not enemigo.estoyVivo()) 0 else 1
-		// si tenes mas ataque que enemigos, recibis de dinero la cantidad de total de minions que quedan
-		// sino recibis de dinero solo lo que hiciste de ataque
-		// si los minions estan muertos dinero DEBERIA sumar 0, si no me equivoque.
+		puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
 		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
+		enemigo.recibirAtaque(self.ataque())
 	}
 }
+
+
+
+
+
+
+
+

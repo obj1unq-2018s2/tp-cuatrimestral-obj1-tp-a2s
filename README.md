@@ -7,7 +7,8 @@ No habrá, al menos de momento, batallas entre campeones (conocidas popularmente
 
 Las batallas están basadas en un sistema simple de ataque y defensa. 
 Cuando un campeón ataca le produce una daño a la oleada de minions igual a los puntos de ataque que posee el campeón. 
-Sin embargo, éste recibe a su vez un daño, producido por los minions que se defienden. El daño es igual a la cantidad de minions que conforman la oleada más un plus que es definido en cada oleada.
+Sin embargo, éste recibe a su vez un daño, producido por los minions que se defienden. El daño es igual a la cantidad de minions que conforman la oleada más un plus que es definido 
+en cada oleada.
 
 Parte 1: 
 --------
@@ -35,7 +36,8 @@ Al equiparse, el campeón recibe 5 puntos de daño y, al desequiparse, recupera 
 * **Tomo Amplificador:** Aporta el 25% de los puntos de daño total recibido por el campeón como puntos de vida y el 5% del daño total como puntos de ataque. 
 Al equiparse otorga dos bloqueos al campeón, pero al desequiparse otorga 1 bloqueo y recibe 30 puntos de daño.
 
-* **Sombrero de Rabadon:** Es una variante del Tomo Amplificador. Aporta 5 puntos más de vida que un Tomo Amplificador, y el doble de los puntos de ataque base del campeón (o sea, algo distinto de lo que aporta el Tomo Amplificador). 
+* **Sombrero de Rabadon:** Es una variante del Tomo Amplificador. Aporta 5 puntos más de vida que un Tomo Amplificador, y el doble de los puntos de ataque base del campeón (o sea, 
+algo distinto de lo que aporta el Tomo Amplificador). 
 Al equiparse, hace lo mismo que un Tomo Amplificador pero el campeón ademas recibe 5 puntos extra de daño. Al desequiparse, no hace nada.
 
 
@@ -97,7 +99,8 @@ Al comprar un item, si tengo el dinero para comprarlo, gasto el dinero y me equi
 Al vender un item, gano la mitad del dinero de su precio y desequipo el item.  
 
 Al atacar a una oleada de minions, un campeón gana una cantidad de dinero igual a la cantidad de minions eliminados de la oleada.  
-**Atención**: la cantidad de minions que quedan eliminados puede ser distinta a los puntos de ataque del campeón. P.ej. si un campeón con 50 puntos de ataque ataca a una oleada de 20 minions, el dinero que gana es 20, no 50.  
+**Atención**: la cantidad de minions que quedan eliminados puede ser distinta a los puntos de ataque del campeón. P.ej. si un campeón con 50 puntos de ataque ataca a una oleada de 
+20 minions, el dinero que gana es 20, no 50.  
 
 
 ### Modificaciones a los items equipables
@@ -121,14 +124,16 @@ posee la misma habilidad activable que el tomo amplificador.
 
 También se pide agregar un nuevo objeto: 
 
-* **Pocion de Vida:** No aporta puntos de ataque ni vida, su precio es 50. No hace nada al equiparse ni al desequiparse. Su habilidad activable consiste en descontar 50 puntos de daño al campeón. Una poción de vida se puede usar hasta dos veces, después de la segunda vez, su habilidad activable no hace nada.
+* **Pocion de Vida:** No aporta puntos de ataque ni vida, su precio es 50. No hace nada al equiparse ni al desequiparse. Su habilidad activable consiste en descontar 50 puntos de 
+daño al campeón. Una poción de vida se puede usar hasta dos veces, después de la segunda vez, su habilidad activable no hace nada.
 
 
 
 Parte Individual:
 ----------------
 
-> IMPORTANTE: A continuación se describen tres tareas. Cada integrante del grupo debera elegir una de ellas. Todos deberán continuar trabajando sobre el mismo repositorio, coordinando para que cada une pueda realizar su parte. En el momento de la entrega, obtendrán dos calificaciones, una grupal y la otra individual.
+> IMPORTANTE: A continuación se describen tres tareas. Cada integrante del grupo debera elegir una de ellas. Todos deberán continuar trabajando sobre el mismo repositorio, 
+coordinando para que cada une pueda realizar su parte. En el momento de la entrega, obtendrán dos calificaciones, una grupal y la otra individual.
 >
 > En caso de que existan grupos de menos de 3 integrantes, cada integrante debe elegir sólo una tarea (y quedará una tarea sin resolver).
 
@@ -138,7 +143,8 @@ Soporte
 
 Agregar los _soportes_. Un soporte se comporta de manera similar a un campeón pero no puede andar sólo, debe vincularse con un campeón, aunque puede cambiar de vínculo cuando lo desee.
 Cada vez que ataca, reduce en 10 puntos el daño total que posee el campeón. 
-Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; **no incluye** las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
+Un soporte _agrega_ a su inventario, los items que tenga el campeón al que se presta como soporte. Esto sirve para lo que aporta cada item en ataque y vida; **no incluye** 
+las consecuencias de equiparse, desequiparse y activar la habilidad activable.     
 Por otro lado, un soporte tiene sus propios items, que compra con su dinero. Estos items no se agregan al inventario del campeón, es _solamente_ en el otro sentido. 
 
 > TIP: Considere usar el metodo inventario(), en vez de usar el atributo inventario en cada lugar que se use en la clase Campeon.
@@ -193,7 +199,8 @@ Ejército de Minions:
 
 Crear la clase Ejercito de minions, que tiene un comportamiento similar a una Oleada, pero que esta compuesta por muchas oleadas de Minions.
 Un ejercito de Minions esta muerto cuando todas sus oleadas estan muertas.
-Cuando un ejército de Minions recibe daño, todas sus oleadas reciben el mismo daño; análogamente, cuando una oleada de minions provoca daño, todas las oleadas le provocaran el mismo daño al campeón que si atacaran por separado.
+Cuando un ejército de Minions recibe daño, todas sus oleadas reciben el mismo daño; análogamente, cuando una oleada de minions provoca daño, todas las oleadas le provocaran el mismo 
+daño al campeón que si atacaran por separado.
 
 Crear el siguiente test:
 

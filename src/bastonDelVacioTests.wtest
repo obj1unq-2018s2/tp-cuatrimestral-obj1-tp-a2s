@@ -9,7 +9,7 @@ describe "Tests del Baston del Vacio (Tobias Ambrosi)" {
 	)
 	var anilloDoran_1 = new AnilloDeDoran()
 	var anilloDoran_2 = new AnilloDeDoran()
-	var pocionDeVida = new PosionDeVida()
+	var pocionDeVida = new PocionDeVida()
 	var sombreroDeRabadon = new SombreroDeRabadon()
 	var bastonDelVacio = new BastonDelVacio(
 		materiales = [sombreroDeRabadon, pocionDeVida]

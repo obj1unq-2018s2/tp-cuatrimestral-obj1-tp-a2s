@@ -1,0 +1,48 @@
+import soportes.*
+import campeon.*
+import items.*
+import minions.*
+
+
+describe "Testeo de soportes" {
+	
+	var draven = new Campeon(vidaBase=150, ataqueBase=25, dinero=1000)
+	var maokai = new Campeon(vidaBase=150, ataqueBase=25, dinero=1000)
+	var janna = new Soporte(vidaBase=150, ataqueBase=25, dinero=100)
+	var ole1 = new Minions(cantidadDeMinions=100, plusDeAtaque=0)
+	var tomo1 = new TomoAmplificador()
+	var poc1 = new PocionDeVida()
+	
+	fixture {
+	janna.vincularCon(draven)
+	draven.atacarA(ole1)
+	janna.atacarA(ole1)
+	janna.vincularCon(maokai)
+	maokai.atacarA(ole1)
+	janna.atacarA(ole1)
+	maokai.comprar(tomo1)
+	janna.comprar(poc1)
+	}
+	
+	test "murio oleada minions" {
+		assert.notThat(ole1.estoyVivo())
+	}
+	test "daño de draven" {
+		assert.equals(90, draven.puntosDeDanio())
+	}
+	test "daño de maokai" {
+		assert.equals(40, maokai.puntosDeDanio())
+	}
+	test "dinero de maokai" {
+		assert.equals(525, maokai.dinero())
+	}
+	test "dinero de janna" {
+		assert.equals(100, janna.dinero())
+	}
+	test "janna con pocion" {
+		assert.that(janna.inventario().contains(poc1))
+	}
+	test "janna con tomo amplificador" {
+		assert.that(janna.inventario().contains(tomo1))
+	}
+}

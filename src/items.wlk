@@ -54,7 +54,7 @@ class SombreroDeRabadon inherits TomoAmplificador{
 	// no hace falta re-escribirla
 }
 
-class PosionDeVida {
+class PocionDeVida {
 	method precio() = 50
 	method serEquipado(campeon_){}
 	method serDesequipado(campeon_){}
