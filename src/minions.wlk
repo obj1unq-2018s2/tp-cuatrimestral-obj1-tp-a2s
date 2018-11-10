@@ -11,3 +11,23 @@ class Minions{
 		cantidadDeMinions = (cantidadDeMinions - danio).max(0)
 	}
 }
+	
+	
+	class EjercitoDeMinions {
+		var property oleadasDeMinions // una lista de oleadas de Minions
+		
+		 method estoyVivo(){
+			return  oleadasDeMinions.all{oleadas => oleadas.estoyVivo()}
+	}
+	
+		 method recibirAtaque(danio){
+			oleadasDeMinions.forEach{oleadas => oleadas.recibirAtaque(danio)}
+		}
+		
+		 method defenderse(){
+		 	var defensaTotal = 0
+			oleadasDeMinions.forEach{oleadas => defensaTotal = defensaTotal + oleadas.defenderse()
+			return defensaTotal
+			}
+		}
+}

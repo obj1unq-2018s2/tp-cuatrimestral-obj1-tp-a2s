@@ -73,8 +73,8 @@ class Campeon{
 	method atacarA(enemigo){
 		// Modificado para la parte de dinero de la P2 del enunciado
 		// no se si funciona
-		bloqueos -= if(not enemigo.estoyVivo()) 0 else 1
-		puntosDeDanio += if(bloqueos>0) 0 else enemigo.defenderse()
+		bloqueos -= if(not enemigo.estoyVivo())  0 else  1
+		puntosDeDanio += if(self.bloqueos()>0)  0 else  enemigo.defenderse()
 		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
 		enemigo.recibirAtaque(self.ataque())
 	}

@@ -1,0 +1,21 @@
+import campeon.*
+import items.*
+import minions.*
+import soportes.*
+
+
+describe "test de ejercito de minions"{
+	var campeon1 = new Campeon(vidaBase = 50, ataqueBase = 20, dinero = 300)
+	var oleada1 = new Minions(cantidadDeMinions = 20 , plusDeAtaque = 5)
+	var oleada2 = new Minions(cantidadDeMinions = 10 , plusDeAtaque = 15)
+	var ejercitoDeMinions1 = new EjercitoDeMinions(oleadasDeMinions = [oleada1, oleada2])
+	
+	test " el campeon y el ejercito de minions deben estar muertos despues del ataque"{
+		campeon1.atacarA(ejercitoDeMinions1)
+		assert.notThat(campeon1.estoyVivo())
+		assert.notThat(ejercitoDeMinions1.estoyVivo())
+	}
+	
+	
+	
+}
