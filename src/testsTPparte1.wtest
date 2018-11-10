@@ -2,6 +2,8 @@ import campeon.*
 import items.*
 import minions.*
 describe "Tests de la parte 1 del TP"{
+	var eustaquio = new Campeon(vidaBase=100, ataqueBase=20, dinero=600)
+	var anil1 = new AnilloDeDoran()
 	
 	var campeon1 = new Campeon(
 		vidaBase = 50,
@@ -45,5 +47,21 @@ describe "Tests de la parte 1 del TP"{
 
 		
 	}
-	
+	test "compra" {
+		eustaquio.comprar(anil1)
+		assert.that(eustaquio.inventario().contains(anil1))
+		assert.equals(300, eustaquio.dinero())
+	}
+	test "venta" {
+		eustaquio.comprar(anil1)
+		eustaquio.vender(anil1)
+		assert.notThat(eustaquio.inventario().contains(anil1))
+		assert.equals(450, eustaquio.dinero())
+	}
+	test "falta plata" {
+		var mario = new Campeon(vidaBase=80, ataqueBase=50, dinero=290)
+		mario.comprar(anil1)
+		assert.notThat(mario.inventario().contains(anil1))
+		assert.equals(290, mario.dinero())
+	}
 }
