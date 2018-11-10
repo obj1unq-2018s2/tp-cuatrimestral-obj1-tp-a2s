@@ -14,20 +14,22 @@ class Minions{
 	
 	
 	class EjercitoDeMinions {
-		var property oleadasDeMinions // una lista de oleadas de Minions
-		
+		var property oleadasDeMinions = []// una lista de oleadas de Minions
+		var property cantidadDeMinions =return  oleadasDeMinions.sum{oleada => oleada.cantidadDeMinions()}
 		 method estoyVivo(){
-			return  oleadasDeMinions.all{oleadas => oleadas.estoyVivo()}
+			return  oleadasDeMinions.all{oleada => oleada.estoyVivo()}
 	}
 	
 		 method recibirAtaque(danio){
-			oleadasDeMinions.forEach{oleadas => oleadas.recibirAtaque(danio)}
+			oleadasDeMinions.forEach{oleada => oleada.recibirAtaque(danio)}
 		}
 		
 		 method defenderse(){
 		 	var defensaTotal = 0
-			oleadasDeMinions.forEach{oleadas => defensaTotal = defensaTotal + oleadas.defenderse()
+			oleadasDeMinions.forEach{oleada => defensaTotal = defensaTotal + oleada.defenderse()}
 			return defensaTotal
 			}
-		}
+
+
+				
 }
