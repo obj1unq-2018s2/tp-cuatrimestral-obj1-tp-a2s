@@ -25,7 +25,8 @@ describe "Tests del Baston del Vacio (Tobias Ambrosi)" {
 		elesis.comprar(bastonDelVacio)
 		elesis.equipar(bastonDelVacio)
 		
-		bastonDelVacio.habilidadActivable(elesis)
+//		bastonDelVacio.habilidadActivable(elesis)
+		elesis.activarHabilidadEspecial(bastonDelVacio)
 	}
 	
 	test "0 de danio recibido"{

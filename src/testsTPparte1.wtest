@@ -27,11 +27,11 @@ describe "Tests de la parte 1 del TP"{
 		campeon1.equipar(tomoAmp1)
 		assert.equals(campeon1.inventario(), [anilloDoran1, tomoAmp1])	
 		
-		campeon1.atacarA(oleadaMinions1) // bloqueo 1
+		campeon1.atacarA(oleadaMinions1)
 		assert.equals(oleadaMinions1.cantidadDeMinions(), 0)
 		assert.notThat(oleadaMinions1.estoyVivo())
-		campeon1.atacarA(oleadaMinions1) // bloqueo 2
-		campeon1.atacarA(oleadaMinions1) // recien este hace danio al campeon
+		campeon1.atacarA(oleadaMinions1) 
+		campeon1.atacarA(oleadaMinions1) 
 		
 		
 		campeon1.desequipar(tomoAmp1)

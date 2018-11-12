@@ -9,7 +9,6 @@ class AnilloDeDoran{
 	}
 	method amplificarVida(campeon_){return 60}
 	method amplificarAtaque(campeon_){return 15}
-	//Agrego estos dos métodos sólo por razones de conservación polimórfica.
 }
 class TomoAmplificador{
 	method precio() = 500
@@ -48,10 +47,7 @@ class SombreroDeRabadon inherits TomoAmplificador{
 	override method amplificarAtaque(campeon_){
 		return campeon_.puntosDeDanio() * 2
 	}
-	override method serDesequipado(campeon_){} //no pasa nada
-	
-	// Al heredar del TomoAmplificador y tener la misma habilidad
-	// no hace falta re-escribirla
+	override method serDesequipado(campeon_){}
 }
 
 class PocionDeVida {

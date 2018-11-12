@@ -17,7 +17,7 @@ class Campeon{
 	}
 	
 	method comprar(item){
-		if(dinero>= item.precio()){
+		if(dinero >= item.precio()){
 			self.equipar(item)
 			dinero -= item.precio()
 		}
@@ -34,12 +34,16 @@ class Campeon{
 	}
 	
 	method amplificacionVida() {
-		return self.inventario().map({item => item.amplificarVida(self)}).sum()
+		return self.inventario().map{
+			item => item.amplificarVida(self)
+		}.sum()
 		
 	}
 
 	method amplificacionAtaque(){
-		return self.inventario().map({item => item.amplificarAtaque(self)}).sum()
+		return self.inventario().map{
+			item => item.amplificarAtaque(self)
+		}.sum()
 	}
 	
 	method recibirHP(aumentoDeVida){vidaExtra += aumentoDeVida}
@@ -55,8 +59,6 @@ class Campeon{
 	method vida() {
 		return vidaBase + vidaExtra + self.amplificacionVida()
 	}
-	//El valor final de vida y ataque es igual al valor base + extra + la amplificación que aplique a cada uno según
-	//los items que el campeon tenga equipados.
 	
 	method estoyVivo() = self.vida() > puntosDeDanio
 	
@@ -71,10 +73,8 @@ class Campeon{
 	}
 
 	method atacarA(enemigo){
-		// Modificado para la parte de dinero de la P2 del enunciado
-		// no se si funciona
 		bloqueos -= if(not enemigo.estoyVivo())  0 else  1
-		puntosDeDanio += if(bloqueos>0)  0 else  enemigo.defenderse()
+		puntosDeDanio += if(bloqueos > 0)  0 else  enemigo.defenderse()
 		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
 		enemigo.recibirAtaque(self.ataque())
 	}
