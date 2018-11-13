@@ -21,12 +21,15 @@ class Campeon{
 			self.equipar(item)
 			dinero -= item.precio()
 		}
+		// TODO Debería tirar excepción.
 	}
+	
 	method vender(item){
 		if(itemsEquipados.contains(item)){
 			self.desequipar(item)
 			dinero += item.precio() / 2
 		}
+		// TODO Debería tirar excepción.
 	}
 	
 	method inventario() {
@@ -34,9 +37,9 @@ class Campeon{
 	}
 	
 	method amplificacionVida() {
-		return self.inventario().map{
+		return self.inventario().sum{
 			item => item.amplificarVida(self)
-		}.sum()
+		}
 		
 	}
 
@@ -73,8 +76,13 @@ class Campeon{
 	}
 
 	method atacarA(enemigo){
+		// TODO Sería mejor tener el chequeo de estoy vivo guardando todo lo demás.
 		bloqueos -= if(not enemigo.estoyVivo())  0 else  1
+
+		// TODO No debería descontarme el bloqueo antes de chequear.
 		puntosDeDanio += if(bloqueos > 0)  0 else  enemigo.defenderse()
+
+		// TODO Me gustaría que aparezca la cantidad de minions que se mueren porque se usa dos veces.
 		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
 		enemigo.recibirAtaque(self.ataque())
 	}

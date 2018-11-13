@@ -25,6 +25,7 @@ class Soporte inherits Campeon {
 	override method atacarA(enemigo){
 		if (self.estaVinculado()){
 			super(enemigo)
+			// TODO Rompe el encapsulamiento
 			vinculo.puntosDeDanio((vinculo.puntosDeDanio() - 10).max(0))
 		}
 		else {
