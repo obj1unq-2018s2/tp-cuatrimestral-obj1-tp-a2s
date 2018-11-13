@@ -18,9 +18,7 @@ class Soporte inherits Campeon {
 	}
 	
 	override method inventario(){
-		//Para un campeón, su inventario son sus items equipados.
-		//Para un soporte, su inventario son sus items equipados más los items
-		//que tenga equipados el campeón al que se vincula, si lo tuviera.
+
 		return super() + if (self.estaVinculado()) {vinculo.inventario()} else []
 	}
 	
