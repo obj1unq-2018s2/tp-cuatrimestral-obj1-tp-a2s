@@ -42,7 +42,7 @@ class SombreroDeRabadon inherits TomoAmplificador{
 		campeon_.recibirDMG(5)
 	}
 	override method amplificarVida(campeon_){
-		return campeon_.puntosDeDanio() * 0.25 + 5
+		return super(campeon_) + 5
 	}
 	override method amplificarAtaque(campeon_){
 		return campeon_.puntosDeDanio() * 2
