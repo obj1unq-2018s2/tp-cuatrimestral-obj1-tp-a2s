@@ -17,7 +17,7 @@ class Minions{
 		var property oleadasDeMinions = []// una lista de oleadas de Minions
 		var property cantidadDeMinions =return  oleadasDeMinions.sum{oleada => oleada.cantidadDeMinions()}
 		 method estoyVivo(){
-			return  oleadasDeMinions.all{oleada => oleada.estoyVivo()}
+			return  oleadasDeMinions.any{oleada => oleada.estoyVivo()}
 	}
 	
 		 method recibirAtaque(danio){
