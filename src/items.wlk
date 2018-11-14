@@ -24,12 +24,12 @@ class AnilloDeDoran {
 }
 
 class TomoAmplificador {
-
+	var usoUnico = true
 	method precio() = 500
 
 	method habilidadActivable(campeon_) {
 		// TODO No puede ser variable local
-		var usoUnico = true
+		//var usoUnico = true
 		if (campeon_.dinero() < 500 and usoUnico) {
 			campeon_.dinero(500)
 			usoUnico = false
@@ -78,7 +78,7 @@ class SombreroDeRabadon inherits TomoAmplificador {
 }
 
 class PocionDeVida {
-
+	var usos = 2
 	method precio() = 50
 
 	method serEquipado(campeon_) {
@@ -89,7 +89,7 @@ class PocionDeVida {
 
 	method habilidadActivable(campeon_) {
 		// TODO No puede ser variable local.
-		var usos = 2
+		//var usos = 2
 		if (usos > 0) {
 			campeon_.recibirDMG(-50)
 			usos -= 1
