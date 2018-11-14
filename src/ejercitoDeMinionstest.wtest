@@ -12,8 +12,7 @@ describe "test de ejercito de minions"{
 	
 	test " el campeon y el ejercito de minions deben estar muertos despues del ataque"{
 		assert.equals(20, campeon1.ataque()) 
-//		assert.equals(30, ejercitoDeMinions1.cantidadDeMinions())
-
+		
 		campeon1.atacarA(ejercitoDeMinions1)
 		assert.notThat(campeon1.estoyVivo())
 		
@@ -21,6 +20,18 @@ describe "test de ejercito de minions"{
 		assert.notThat(ejercitoDeMinions1.estoyVivo())
 	}
 	
+	test "cantidad de minions del ejercito retorna 30"{
+		assert.equals(30, ejercitoDeMinions1.cantidadDeMinions())
+	}
 	
 	
+	test"cantidad de minions del ejercito despues del ataque de el campeon debe retornar 0"{
+		campeon1.atacarA(ejercitoDeMinions1)
+		assert.equals(0, ejercitoDeMinions1.cantidadDeMinions())
+	}
+	
+	
+	test " ejercito 1 defenderse debe retornar 50"{
+		assert.equals(50, ejercitoDeMinions1.defenderse())
+	}
 }

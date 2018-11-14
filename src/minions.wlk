@@ -20,7 +20,14 @@ class EjercitoDeMinions {
 	var property oleadasDeMinions = [] // una lista de oleadas de Minions
 	
 	// TODO Usar un método
-	var property cantidadDeMinions = return oleadasDeMinions.sum{ oleada => oleada.cantidadDeMinions() }
+//	var property cantidadDeMinions = return oleadasDeMinions.sum{ oleada => oleada.cantidadDeMinions() }
+
+
+
+	method cantidadDeMinions(){
+		return oleadasDeMinions.sum{ oleada => oleada.cantidadDeMinions() }
+	}
+	
 
 	method estoyVivo() {
 		return oleadasDeMinions.any{ oleada => oleada.estoyVivo() }
@@ -32,10 +39,12 @@ class EjercitoDeMinions {
 
 	method defenderse() {
 		// TODO No usar foreach para preguntas, ver manejo de colecciones.
-		var defensaTotal = 0
-		oleadasDeMinions.forEach{ oleada => defensaTotal = defensaTotal + oleada.defenderse()}
-		return defensaTotal
+			
+		return oleadasDeMinions.sum{ oleada =>  oleada.defenderse()}
+
 	}
+	
+
 
 }
 
