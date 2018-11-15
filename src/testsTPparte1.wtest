@@ -81,6 +81,7 @@ describe "Tests de la parte 1 del TP"{
 		assert.equals(60, ole2.cantidadDeMinions())
 		eustaquio.atacarA(ole2)
 		assert.equals(70, eustaquio.puntosDeDanio())
+		assert.equals(0, eustaquio.bloqueos())
 	}
 	
 	test "pago correcto por ataque" {

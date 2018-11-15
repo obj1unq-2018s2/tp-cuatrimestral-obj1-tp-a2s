@@ -28,7 +28,7 @@ class Soporte inherits Campeon {
 			vinculo.recibirDMG(-10)
 		}
 		else {
-			self.error("Debe vincular con un campeón para atacar")
+			throw new Exception("Debe vincular con un campeón para atacar")
 		}
 	}
 	
@@ -37,7 +37,7 @@ class Soporte inherits Campeon {
 			super(item)
 		}
 		else {
-			self.error("Debe vincular con un campeón para comprar")
+			throw new Exception("Debe vincular con un campeón para comprar")
 		}
 	}
 	override method vender(item){
@@ -45,7 +45,7 @@ class Soporte inherits Campeon {
 			super(item)
 		}
 		else {
-			self.error("Debe vincular con un campeón para vender")
+			throw new Exception("Debe vincular con un campeón para vender")
 		}
 	}
 }

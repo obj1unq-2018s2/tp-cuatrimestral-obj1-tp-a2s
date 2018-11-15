@@ -45,4 +45,40 @@ describe "Testeo de soportes" {
 	test "janna con tomo amplificador" {
 		assert.that(janna.inventario().contains(tomo1))
 	}
+	test "excepcion compra, soporte solo" {
+		var ani3 = new AnilloDeDoran()
+		var lydia = new Soporte(vidaBase=100, ataqueBase=25, dinero=10)
+		assert.throwsException({lydia.comprar(ani3)})
+	}
+	test "excepcion venta, soporte solo" {
+		var poc2 = new PocionDeVida()
+		var lydia = new Soporte(vidaBase=100, ataqueBase=25, dinero=80)
+		var dragonborn = new Campeon(vidaBase=200, ataqueBase=50, dinero=1000)
+		lydia.vincularCon(dragonborn)
+		assert.that(lydia.estaVinculado())
+		lydia.comprar(poc2)
+		lydia.desvincular()
+		assert.notThat(lydia.estaVinculado())
+		assert.throwsException({lydia.vender(poc2)})
+	}
+	test "excepcion ataque, soporte solo" {
+		var ole2 = new Minions(cantidadDeMinions=5, plusDeAtaque=5)
+		var esbern = new Soporte(vidaBase=100, ataqueBase=5, dinero=10)
+		assert.throwsException({esbern.atacarA(ole2)})
+	}
+	test "cambios de inventario" {
+		var lydia = new Soporte(vidaBase=100, ataqueBase=25, dinero=800)
+		var dragonborn = new Campeon(vidaBase=200, ataqueBase=50, dinero=1000)
+		var ani1 = new AnilloDeDoran()
+		var poc3 = new PocionDeVida()
+		lydia.vincularCon(dragonborn)
+		dragonborn.comprar(poc3)
+		lydia.comprar(ani1)
+		assert.equals([ani1, poc3], lydia.inventario())
+		assert.throwsException({lydia.vender(poc3)})
+		assert.equals([poc3], dragonborn.inventario())
+		lydia.vender(ani1)
+		lydia.desvincular()
+		assert.equals([], lydia.inventario())
+	}
 }
