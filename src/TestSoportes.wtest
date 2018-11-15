@@ -24,8 +24,8 @@ describe "Testeo de soportes" {
 	janna.comprar(poc1)
 	}
 	
-	test "murio oleada minions" {
-		assert.notThat(ole1.estoyVivo())
+	test "dano de oleada" {
+		assert.equals(0, ole1.cantidadDeMinions())
 	}
 	test "daño de draven" {
 		assert.equals(90, draven.puntosDeDanio())

@@ -14,6 +14,9 @@ class Campeon{
 		if (self.inventario().contains(item)){
 			item.habilidadActivable(self)
 		}
+		else {
+			throw new Exception("No hay ningun" + item.toString() + "en el inventario")
+		}
 	}
 	
 	method comprar(item){
@@ -90,13 +93,12 @@ class Campeon{
 //		dinero += if(self.ataque() > enemigo.cantidadDeMinions()) enemigo.cantidadDeMinions() else self.ataque()
 //		enemigo.recibirAtaque(self.ataque())
 
-		if( enemigo.estoyVivo() ) {
-			bloqueos -= 1.max(0)
-			puntosDeDanio += if( bloqueos > 0 ) 0 else enemigo.defenderse()
-			//dinero +=  ??? 
-			enemigo.recibirAtaque(self.ataque())
+		if (enemigo.estoyVivo()) {
+			puntosDeDanio += if (bloqueos > 0) 0 else enemigo.defenderse() //Sólo recibe daño si no tiene bloqueos
+			bloqueos = (bloqueos - 1).max(0) //Resta bloqueos en cada ataque, excepto si no tiene ninguno
+			dinero += enemigo.minionsQueMueren(self.ataque()) //Recibe tanto dinero como minions mate su ataque
+			enemigo.recibirAtaque(self.ataque()) //Por último la oleada recibe el ataque
 		}
-
 	}
 }
 

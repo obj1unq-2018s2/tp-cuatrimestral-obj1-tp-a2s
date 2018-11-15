@@ -9,10 +9,12 @@ class Minions {
 		return if (self.estoyVivo()) cantidadDeMinions + plusDeAtaque else 0
 	}
 
-	method recibirAtaque(danio) {
-		cantidadDeMinions = (cantidadDeMinions - danio).max(0)
+	method minionsQueMueren(fuerzaAtaque) {
+		return cantidadDeMinions.min(fuerzaAtaque)
 	}
-
+	method recibirAtaque(fuerzaAtaque){
+		cantidadDeMinions -= self.minionsQueMueren(fuerzaAtaque)
+	}
 }
 
 class EjercitoDeMinions {
@@ -36,7 +38,9 @@ class EjercitoDeMinions {
 	method recibirAtaque(danio) {
 		oleadasDeMinions.forEach{ oleada => oleada.recibirAtaque(danio)}
 	}
-
+	method minionsQueMueren(fuerzaAtaque) {
+		return oleadasDeMinions.sum({oleada => oleada.minionsQueMueren(fuerzaAtaque)})
+	}
 	method defenderse() {
 		// TODO No usar foreach para preguntas, ver manejo de colecciones.
 			

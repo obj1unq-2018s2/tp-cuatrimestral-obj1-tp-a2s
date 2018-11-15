@@ -12,11 +12,12 @@ describe "test de ejercito de minions"{
 	
 	test " el campeon y el ejercito de minions deben estar muertos despues del ataque"{
 		assert.equals(20, campeon1.ataque()) 
-		
+		assert.equals(30, ejercitoDeMinions1.cantidadDeMinions())
 		campeon1.atacarA(ejercitoDeMinions1)
 		assert.notThat(campeon1.estoyVivo())
 		
-//		assert.equals(330, campeon1.dinero())
+		assert.equals(330, campeon1.dinero())
+		assert.equals(0, ejercitoDeMinions1.cantidadDeMinions())
 		assert.notThat(ejercitoDeMinions1.estoyVivo())
 	}
 	

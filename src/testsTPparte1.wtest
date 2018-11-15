@@ -28,7 +28,7 @@ describe "Tests de la parte 1 del TP"{
 		assert.equals(campeon1.inventario(), [anilloDoran1, tomoAmp1])	
 		
 		campeon1.atacarA(oleadaMinions1)
-		assert.equals(oleadaMinions1.cantidadDeMinions(), 0)
+		assert.equals(0, oleadaMinions1.cantidadDeMinions())
 		assert.notThat(oleadaMinions1.estoyVivo())
 		campeon1.atacarA(oleadaMinions1) 
 		campeon1.atacarA(oleadaMinions1) 
@@ -58,10 +58,65 @@ describe "Tests de la parte 1 del TP"{
 		assert.notThat(eustaquio.inventario().contains(anil1))
 		assert.equals(450, eustaquio.dinero())
 	}
-	test "falta plata" {
-		var mario = new Campeon(vidaBase=80, ataqueBase=50, dinero=290)
-		mario.comprar(anil1)
-		assert.notThat(mario.inventario().contains(anil1))
-		assert.equals(290, mario.dinero())
+	test "excepcion de dinero insuficiente" {
+		var mario = new Campeon(vidaBase=100, ataqueBase=25, dinero=10)
+		assert.throwsException({mario.comprar(anil1)})
 	}
+	test "excepcion de item no existente" {
+		assert.throwsException({eustaquio.vender(anil1)})
+	}
+	
+	
+	test "resta de bloqueos y daño tras resta" {
+		var ole2 = new Minions(cantidadDeMinions=100, plusDeAtaque=10)
+		eustaquio.comprar(tomoAmp1)
+		assert.equals(2, eustaquio.bloqueos())
+		eustaquio.atacarA(ole2)
+		assert.equals(1, eustaquio.bloqueos())
+		assert.equals(0, eustaquio.puntosDeDanio())
+		eustaquio.atacarA(ole2)
+		assert.equals(0, eustaquio.bloqueos())
+		assert.equals(0, eustaquio.puntosDeDanio())
+		assert.that(ole2.estoyVivo())
+		assert.equals(60, ole2.cantidadDeMinions())
+		eustaquio.atacarA(ole2)
+		assert.equals(70, eustaquio.puntosDeDanio())
+	}
+	
+	test "pago correcto por ataque" {
+		var beto = new Campeon(vidaBase=100, ataqueBase=10, dinero=0)
+		var coso = new Campeon(vidaBase=100, ataqueBase=20, dinero=0)
+		var ole3 = new Minions(cantidadDeMinions=35, plusDeAtaque=0)
+		coso.atacarA(ole3)
+		assert.equals(20, coso.dinero())
+		beto.atacarA(ole3)
+		assert.equals(10, beto.dinero())
+		coso.atacarA(ole3)
+		assert.equals(25, coso.dinero())
+		assert.notThat(ole3.estoyVivo())
+	}
+	test "sombrero de rabadon" {
+		var somb1 = new SombreroDeRabadon()
+		assert.equals(600, somb1.precio())
+		var pobre = new Campeon(vidaBase=10, ataqueBase=1, dinero=200)
+		assert.throwsException({pobre.comprar(somb1)})
+		assert.equals(100, eustaquio.vida())
+		eustaquio.comprar(somb1)
+		assert.equals(0, eustaquio.dinero())
+		assert.equals(106.25, eustaquio.vida()) //base 100 + 5 x 0.25 + 5 = 106.25
+		assert.equals(2, eustaquio.bloqueos())
+	}
+	test "pocion de vida" {
+		var fatiga = new Campeon(vidaBase=200, ataqueBase=20, dinero=60, puntosDeDanio=150)
+		var poc1 = new PocionDeVida()
+		fatiga.comprar(poc1)
+		assert.equals(10, fatiga.dinero())
+		fatiga.activarHabilidadEspecial(poc1)
+		assert.equals(100, fatiga.puntosDeDanio())
+		fatiga.activarHabilidadEspecial(poc1)
+		assert.equals(50, fatiga.puntosDeDanio())
+		assert.throwsException({fatiga.activarHabilidadEspecial(poc1)})
+	}
+	
+	
 }

@@ -94,6 +94,9 @@ class PocionDeVida {
 			campeon_.recibirDMG(-50)
 			usos -= 1
 		}
+		else {
+			throw new Exception("La pocion esta agotada")
+		}
 	}
 
 	method amplificarVida(campeon_) {
@@ -113,7 +116,7 @@ class BastonDelVacio {
 
 	method precio() = 0
 
-	method serEquipado(camepon_) {
+	method serEquipado(campeon_) {
 	}
 
 	method serDesequipado(campeon_) {
